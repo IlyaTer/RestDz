@@ -39,17 +39,17 @@ public class CalculationRestClient {
                 res = Double.parseDouble(a) / Double.parseDouble(b);
             }
 
-            if (clientType.equals("MyJavaApp")) {
+            if (clientType.contains("MyJavaApp")) {
                 String accept = request.getHeader("Accept");
 
-                if (accept.equals("application/json")) {
+                if (accept.contains("application/json")) {
                     
                     headers.add("Content-Type", "application/json");
                     return new ResponseEntity<Object>(
                             "{\"result\":\"" + res + "\"}",
                             headers, HttpStatus.OK);
                     
-                } else if (accept.equals("text/plain")) {
+                } else if (accept.contains("text/plain")) {
                     
                     headers.add("Content-Type", "text/plain");
                     return new ResponseEntity<Object>(
